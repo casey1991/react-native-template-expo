@@ -21,6 +21,6 @@
     "ios": {
       "supportsTablet": true
     },
-    "entryPoint": "index.js"
+    "entryPoint": "./src/launch.js"
   }
 }
