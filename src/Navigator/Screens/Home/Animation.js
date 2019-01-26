@@ -3,6 +3,8 @@ import { View } from "react-native";
 import { Button, Card, Title, Paragraph, IconButton } from "react-native-paper";
 import { Animated, Easing, StyleSheet } from "react-native";
 export default class Animation extends React.Component {
+  //  https://blog.pusher.com/animation-react-native-part-1/
+  //  https://blog.pusher.com/animation-react-native-part-2/
   constructor(props) {
     super(props);
     // TIPS:
