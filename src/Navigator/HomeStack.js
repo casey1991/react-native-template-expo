@@ -1,21 +1,21 @@
-import { createDrawerNavigator } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation";
 import {
   HomeScreen,
   MeScreen,
   MessageScreen,
   AnimationScreen
 } from "./Screens/Home";
-export const HomeStack = createDrawerNavigator({
+export const HomeStack = createBottomTabNavigator({
   Home: {
     screen: HomeScreen
   },
-  Me: {
-    screen: MeScreen
+  Animation: {
+    screen: AnimationScreen
   },
   Message: {
     screen: MessageScreen
   },
-  Animation: {
-    screen: AnimationScreen
+  Me: {
+    screen: MeScreen
   }
 });
