@@ -5,15 +5,16 @@ import {
   MessageScreen,
   SearchScreen
 } from "./Screens/Home";
+import { Constants } from "../Libs/NavigationService";
 export const HomeStack = createBottomTabNavigator({
-  Home: {
+  [Constants.HOME]: {
     screen: HomeScreen
   },
-  Search: { screen: SearchScreen },
-  Message: {
+  [Constants.SEARCH]: { screen: SearchScreen },
+  [Constants.MESSAGE]: {
     screen: MessageScreen
   },
-  Me: {
+  [Constants.ME]: {
     screen: MeScreen
   }
 });

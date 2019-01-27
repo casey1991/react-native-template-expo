@@ -1,11 +1,12 @@
 import { NavigationActions } from "react-navigation";
 import { shouldAuthed } from "./utils";
+export { default as Constants } from "./Constants";
+
 let _navigator = null;
 export const setTopLevelNavigator = ref => {
   _navigator = ref;
 };
 export const navigate = (routeName, params) => {
-  const shouldAuthed = shouldAuthed(routeName);
   //check token
   _navigator.dispatch(
     NavigationActions.navigate({
@@ -13,4 +14,8 @@ export const navigate = (routeName, params) => {
       params
     })
   );
+};
+export const isAuthed = routeName => {
+  const should = shouldAuthed(routeName);
+  return true;
 };
