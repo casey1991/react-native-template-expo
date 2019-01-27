@@ -1,8 +1,12 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createSwitchNavigator, createAppContainer } from "react-navigation";
 import { HomeStack } from "./HomeStack";
-const AppStack = createStackNavigator({
+import { AuthStack } from "./AuthStack";
+const AppStack = createSwitchNavigator({
   Home: {
     screen: HomeStack
+  },
+  Auth: {
+    screen: AuthStack
   }
 });
 export const AppNavigator = createAppContainer(AppStack);

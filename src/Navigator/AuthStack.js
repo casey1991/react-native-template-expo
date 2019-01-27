@@ -1,2 +1,6 @@
 import { createStackNavigator } from "react-navigation";
-export const HomeStack = createStackNavigator({});
+import { LoginScreen } from "./Screens/Auth";
+export const AuthStack = createStackNavigator(
+  { Login: { screen: LoginScreen } },
+  { mode: "card" }
+);
