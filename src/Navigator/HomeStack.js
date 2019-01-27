@@ -3,15 +3,13 @@ import {
   HomeScreen,
   MeScreen,
   MessageScreen,
-  AnimationScreen
+  SearchScreen
 } from "./Screens/Home";
 export const HomeStack = createBottomTabNavigator({
   Home: {
     screen: HomeScreen
   },
-  Animation: {
-    screen: AnimationScreen
-  },
+  Search: { screen: SearchScreen },
   Message: {
     screen: MessageScreen
   },

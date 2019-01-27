@@ -1,30 +1,46 @@
 import React from "react";
-import { map } from "lodash";
+import { FlatList, StyleSheet, View } from "react-native";
 import { compose } from "redux";
 import { Button, Card, Title, Paragraph } from "react-native-paper";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 class Notes extends React.Component {
+  _renderItem = ({ item: note }) => {
+    return (
+      <Card key={note.id}>
+        <Card.Content>
+          <Title>{note.title}</Title>
+          <Paragraph>Card content</Paragraph>
+        </Card.Content>
+        <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
+        <Card.Actions>
+          <Button>Start</Button>
+        </Card.Actions>
+      </Card>
+    );
+  };
+  _renderSeparator = () => {
+    return <View style={[styles.ItemDivider]} />;
+  };
   render() {
     const { notes } = this.props;
     return (
       <React.Fragment>
-        {map(notes, note => (
-          <Card key={note.id}>
-            <Card.Content>
-              <Title>{note.title}</Title>
-              <Paragraph>Card content</Paragraph>
-            </Card.Content>
-            <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
-            <Card.Actions>
-              <Button>Start</Button>
-            </Card.Actions>
-          </Card>
-        ))}
+        <FlatList
+          data={notes}
+          renderItem={this._renderItem}
+          keyExtractor={item => item.id}
+          ItemSeparatorComponent={this._renderSeparator}
+        />
       </React.Fragment>
     );
   }
 }
+const styles = StyleSheet.create({
+  ItemDivider: {
+    height: 10
+  }
+});
 export const QUERY_NOTES = gql`
   {
     notes {
