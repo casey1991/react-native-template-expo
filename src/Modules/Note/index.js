@@ -1,1 +1,1 @@
-export {default as  Notes } from "./Containers/Notes";
+export { default as Notes } from "./Containers/Notes";

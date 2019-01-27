@@ -1,21 +1,34 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { IconButton } from "react-native-paper";
 import Toolbar from "../../../Components/Toolbar";
+import { CreateToken } from "../../../Modules/Auth";
 import { navigate, Constants } from "../../../Libs/NavigationService";
 export default class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: null,
+      password: null
+    };
+  }
+  _renderToolbar = () => {
+    return (
+      <Toolbar>
+        <IconButton
+          icon="close"
+          onPress={() => {
+            navigate(Constants.HOME_STACK);
+          }}
+        />
+      </Toolbar>
+    );
+  };
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Toolbar>
-          <IconButton
-            icon="close"
-            onPress={() => {
-              navigate(Constants.HOME_STACK);
-            }}
-          />
-        </Toolbar>
-        <Text>Login Screen</Text>
+        {this._renderToolbar()}
+        <CreateToken />
       </View>
     );
   }
