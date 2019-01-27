@@ -1,4 +1,5 @@
 import { NavigationActions } from "react-navigation";
+import { AsyncStorage } from "react-native";
 import { shouldAuthed } from "./utils";
 export { default as Constants } from "./Constants";
 
@@ -15,7 +16,21 @@ export const navigate = (routeName, params) => {
     })
   );
 };
-export const isAuthed = routeName => {
+export const isAuthed = (routeName, callback) => {
   const should = shouldAuthed(routeName);
-  return true;
+  if (!should) {
+    callback(null, true);
+  } else {
+    AsyncStorage.getItem("token", (error, token) => {
+      if (error) {
+        callback(error, false);
+        return;
+      }
+      if (token) {
+        callback(null, true);
+        return;
+      }
+      callback(null, false);
+    });
+  }
 };

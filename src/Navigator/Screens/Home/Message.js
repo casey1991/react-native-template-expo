@@ -4,11 +4,13 @@ import { navigate, Constants, isAuthed } from "../../../Libs/NavigationService";
 export default class Message extends React.Component {
   static navigationOptions = {
     tabBarOnPress: ({ navigation, defaultHandler }) => {
-      if (isAuthed(Constants.MESSAGE)) {
-        defaultHandler();
-        return;
-      }
-      navigate(Constants.LOGIN);
+      isAuthed(Constants.MESSAGE, (error, pass) => {
+        if (pass) {
+          defaultHandler();
+        } else {
+          navigate(Constants.LOGIN);
+        }
+      });
     }
   };
   render() {
