@@ -16,6 +16,13 @@ export const navigate = (routeName, params) => {
     })
   );
 };
+export const goBack = key => {
+  _navigator.dispatch(
+    NavigationActions.back({
+      key: key
+    })
+  );
+};
 export const isAuthed = (routeName, callback) => {
   const should = shouldAuthed(routeName);
   if (!should) {
