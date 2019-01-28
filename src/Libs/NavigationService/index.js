@@ -2,6 +2,7 @@ import { NavigationActions } from "react-navigation";
 import { AsyncStorage } from "react-native";
 import { shouldAuthed } from "./utils";
 import { LOGIN } from "./Constants";
+import { validateToken } from "../Auth";
 export { default as Constants } from "./Constants";
 
 let _navigator = null;
@@ -35,16 +36,12 @@ export const isAuthed = (routeName, callback) => {
   if (!should) {
     callback(null, true);
   } else {
-    AsyncStorage.getItem("token", (error, token) => {
-      if (error) {
-        callback(error, false);
-        return;
-      }
+    validateToken((error, token) => {
       if (token) {
         callback(null, true);
-        return;
+      } else {
+        callback(false, false);
       }
-      callback(null, false);
     });
   }
 };
