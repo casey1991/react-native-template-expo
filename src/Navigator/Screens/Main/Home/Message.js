@@ -1,6 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { navigate, Constants, isAuthed } from "../../../Libs/NavigationService";
+import {
+  navigate,
+  Constants,
+  isAuthed
+} from "../../../../Libs/NavigationService";
 export default class Message extends React.Component {
   static navigationOptions = {
     tabBarOnPress: ({ navigation, defaultHandler }) => {
