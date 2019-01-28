@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, AsyncStorage } from "react-native";
 import { IconButton } from "react-native-paper";
 import {
   navigate,
@@ -19,6 +19,9 @@ export default class Me extends React.Component {
       });
     }
   };
+  _clearToken = async () => {
+    await AsyncStorage.removeItem("token");
+  };
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -26,7 +29,8 @@ export default class Me extends React.Component {
           <IconButton
             icon="close"
             onPress={() => {
-              navigate(Constants.HOME_STACK);
+              this._clearToken();
+              navigate(Constants.ME);
             }}
           />
         </Toolbar>

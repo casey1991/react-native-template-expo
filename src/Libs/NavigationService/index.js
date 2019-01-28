@@ -1,6 +1,7 @@
 import { NavigationActions } from "react-navigation";
 import { AsyncStorage } from "react-native";
 import { shouldAuthed } from "./utils";
+import { LOGIN } from "./Constants";
 export { default as Constants } from "./Constants";
 
 let _navigator = null;
@@ -8,13 +9,19 @@ export const setTopLevelNavigator = ref => {
   _navigator = ref;
 };
 export const navigate = (routeName, params) => {
-  //check token
-  _navigator.dispatch(
-    NavigationActions.navigate({
-      routeName,
-      params
-    })
-  );
+  isAuthed(routeName, (error, pass) => {
+    if (pass) {
+      routeName = routeName;
+    } else {
+      routeName = LOGIN;
+    }
+    _navigator.dispatch(
+      NavigationActions.navigate({
+        routeName,
+        params
+      })
+    );
+  });
 };
 export const goBack = key => {
   _navigator.dispatch(
