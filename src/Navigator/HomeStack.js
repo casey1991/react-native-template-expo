@@ -5,7 +5,7 @@ import {
   MessageScreen,
   SearchScreen
 } from "./Screens/Main/Home";
-import { Constants } from "../Libs/NavigationService";
+import { Constants } from "~/Libs/NavigationService";
 export const HomeStack = createBottomTabNavigator({
   [Constants.HOME]: {
     screen: HomeScreen

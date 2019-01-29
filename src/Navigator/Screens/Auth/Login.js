@@ -1,9 +1,9 @@
 import React from "react";
 import { View } from "react-native";
 import { IconButton } from "react-native-paper";
-import Toolbar from "../../../Components/Toolbar";
-import { CreateToken } from "../../../Modules/Auth";
-import { navigate, Constants } from "../../../Libs/NavigationService";
+import Toolbar from "~/Components/Toolbar";
+import { CreateToken } from "~/Modules/Auth";
+import { navigate, Constants } from "~/Libs/NavigationService";
 export default class Login extends React.Component {
   constructor(props) {
     super(props);

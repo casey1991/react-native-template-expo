@@ -1,12 +1,8 @@
 import React from "react";
 import { View, AsyncStorage } from "react-native";
 import { IconButton } from "react-native-paper";
-import {
-  navigate,
-  Constants,
-  isAuthed
-} from "../../../../Libs/NavigationService";
-import Toolbar from "../../../../Components/Toolbar";
+import { navigate, Constants, isAuthed } from "~/Libs/NavigationService";
+import Toolbar from "~/Components/Toolbar";
 export default class Me extends React.Component {
   static navigationOptions = {
     tabBarOnPress: ({ navigation, defaultHandler }) => {
