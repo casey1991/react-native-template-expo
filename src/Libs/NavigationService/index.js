@@ -1,5 +1,4 @@
 import { NavigationActions } from "react-navigation";
-import { AsyncStorage } from "react-native";
 import { shouldAuthed } from "./utils";
 import { LOGIN } from "./Constants";
 import { validateToken } from "../Auth";

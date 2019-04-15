@@ -1,7 +1,20 @@
-import { createStackNavigator } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation";
+import {
+  HomeScreen,
+  MeScreen,
+  MessageScreen,
+  SearchScreen
+} from "./Screens/Main/Home";
 import { Constants } from "~/Libs/NavigationService";
-import { HomeStack } from "./HomeStack";
-export const MainStack = createStackNavigator(
-  { [Constants.HOME_STACK]: { screen: HomeStack } },
-  { headerMode: "none" }
-);
+export const MainStack = createBottomTabNavigator({
+  [Constants.HOME]: {
+    screen: HomeScreen
+  },
+  [Constants.SEARCH]: { screen: SearchScreen },
+  [Constants.MESSAGE]: {
+    screen: MessageScreen
+  },
+  [Constants.ME]: {
+    screen: MeScreen
+  }
+});

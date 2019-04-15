@@ -18,7 +18,7 @@ export default class Login extends React.Component {
         <IconButton
           icon="close"
           onPress={() => {
-            navigate(Constants.HOME_STACK);
+            navigate(Constants.MAIN_STACK);
           }}
         />
       </Toolbar>
