@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { IconButton } from "react-native-paper";
+import { IconButton, Button } from "react-native-paper";
 import Toolbar from "~/Components/Toolbar";
 import { CreateToken } from "~/Modules/Auth";
 import { navigate, Constants } from "~/Libs/NavigationService";
@@ -24,11 +24,15 @@ export default class Login extends React.Component {
       </Toolbar>
     );
   };
+  _jumpToForgotScreen = () => {
+    navigate(Constants.FORGOT);
+  };
   render() {
     return (
       <View style={{ flex: 1 }}>
         {this._renderToolbar()}
         <CreateToken />
+        <Button onPress={this._jumpToForgotScreen}>Forgot</Button>
       </View>
     );
   }

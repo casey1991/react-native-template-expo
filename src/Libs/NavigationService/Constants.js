@@ -7,6 +7,7 @@ export const SEARCH = "Search";
 export const MESSAGE = "Message";
 export const ME = "Me";
 export const LOGIN = "Login";
+export const FORGOT = "Forgot";
 export default {
   AUTH_STACK,
   MAIN_STACK,
@@ -14,5 +15,6 @@ export default {
   SEARCH,
   MESSAGE,
   ME,
-  LOGIN
+  LOGIN,
+  FORGOT
 };
