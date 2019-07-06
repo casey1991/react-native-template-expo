@@ -1,6 +1,6 @@
-import { combineReducers } from "redux";
+import { combineReducers, Reducer, AnyAction } from "redux";
 import { reducer as app } from "./App";
-export let rootReducer = null;
+export let rootReducer: Reducer<{ app: unknown }, AnyAction>;
 export const createReducers = () => {
   if (rootReducer) return rootReducer;
   rootReducer = combineReducers({ app });

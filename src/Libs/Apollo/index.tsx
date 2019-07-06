@@ -1,8 +1,8 @@
 import { ApolloClient } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
+import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
 import { createLinks } from "./links";
 
-export let client = null;
+export let client: ApolloClient<NormalizedCacheObject>;
 export let cache = new InMemoryCache();
 export const createApolloClient = () => {
   if (client) {
