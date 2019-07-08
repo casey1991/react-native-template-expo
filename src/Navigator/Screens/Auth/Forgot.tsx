@@ -3,8 +3,14 @@ import { View } from "react-native";
 import { IconButton } from "react-native-paper";
 import Toolbar from "~/Components/Toolbar";
 import { goBack } from "~/Libs/NavigationService";
-export default class Forgot extends React.Component {
-  constructor(props) {
+
+export interface ForgotScreenProps {}
+export interface ForgotScreenState {}
+class ForgotScreenComponent extends React.Component<
+  ForgotScreenProps,
+  ForgotScreenState
+> {
+  constructor(props: ForgotScreenProps) {
     super(props);
     this.state = {
       email: null,
@@ -27,3 +33,5 @@ export default class Forgot extends React.Component {
     return <View style={{ flex: 1 }}>{this._renderToolbar()}</View>;
   }
 }
+export default ForgotScreenComponent;
+export const ForgotScreen = ForgotScreenComponent;

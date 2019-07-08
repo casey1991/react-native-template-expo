@@ -4,6 +4,5 @@ export default {
     tabs: {
       home: characters.home
     }
-  },
-  home: characters.home
+  }
 };

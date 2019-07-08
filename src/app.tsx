@@ -8,10 +8,11 @@ import { createStore } from "~/Libs/Redux";
 import { setTopLevelNavigator } from "~/Libs/NavigationService";
 import i18n from "~/Libs/i18n";
 import { AppNavigator } from "~/Navigator/AppStack";
-const WrappedStack = ({ t }) => (
+import { NavigationContainerComponent } from "react-navigation";
+const WrappedStack = ({ t }: any) => (
   <AppNavigator
     screenProps={{ t, i18n }}
-    ref={navigatorRef => {
+    ref={(navigatorRef: NavigationContainerComponent) => {
       setTopLevelNavigator(navigatorRef);
     }}
   />

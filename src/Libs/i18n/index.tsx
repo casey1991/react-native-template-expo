@@ -1,10 +1,10 @@
-import i18n from "i18next";
+import i18n, { Resource } from "i18next";
 import { reactI18nextModule } from "react-i18next";
 import { en_US, zh_CN } from "./languages";
 import { LANGUAGE_EN_US, LANGUAGE_ZH_CH } from "./constants";
 
 // the translations
-const resources = {
+const resources: Resource = {
   [LANGUAGE_EN_US]: en_US,
   [LANGUAGE_ZH_CH]: zh_CN
 };

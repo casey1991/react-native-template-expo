@@ -1,46 +1,33 @@
-import { NavigationActions } from "react-navigation";
-import { shouldAuthed } from "./utils";
-import { LOGIN } from "./Constants";
-import { validateToken } from "../Auth";
+import {
+  NavigationActions,
+  NavigationContainerComponent,
+  NavigationNavigateAction
+} from "react-navigation";
 export { default as Constants } from "./Constants";
 
-let _navigator = null;
-export const setTopLevelNavigator = ref => {
+let _navigator: NavigationContainerComponent;
+export const setTopLevelNavigator = (ref: NavigationContainerComponent) => {
   _navigator = ref;
 };
-export const navigate = (routeName, params) => {
-  isAuthed(routeName, (error, pass) => {
-    if (pass) {
-      routeName = routeName;
-    } else {
-      routeName = LOGIN;
-    }
-    _navigator.dispatch(
-      NavigationActions.navigate({
-        routeName,
-        params
-      })
-    );
-  });
-};
-export const goBack = key => {
+export function navigate<NavigationParams>(
+  routeName: string,
+  params?: NavigationParams,
+  action?: NavigationNavigateAction,
+  key?: string
+) {
+  _navigator.dispatch(
+    NavigationActions.navigate({
+      routeName,
+      params,
+      action,
+      key
+    })
+  );
+}
+export function goBack(key?: string) {
   _navigator.dispatch(
     NavigationActions.back({
       key: key
     })
   );
-};
-export const isAuthed = (routeName, callback) => {
-  const should = shouldAuthed(routeName);
-  if (!should) {
-    callback(null, true);
-  } else {
-    validateToken((error, token) => {
-      if (token) {
-        callback(null, true);
-      } else {
-        callback(false, false);
-      }
-    });
-  }
-};
+}

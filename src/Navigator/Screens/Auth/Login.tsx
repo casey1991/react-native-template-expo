@@ -4,8 +4,13 @@ import { IconButton, Button } from "react-native-paper";
 import Toolbar from "~/Components/Toolbar";
 import { CreateToken } from "~/Modules/Auth";
 import { navigate, Constants } from "~/Libs/NavigationService";
-export default class Login extends React.Component {
-  constructor(props) {
+export interface LoginScreenProps {}
+interface LoginScreenState {}
+class LoginScreenComponent extends React.Component<
+  LoginScreenProps,
+  LoginScreenState
+> {
+  constructor(props: LoginScreenProps) {
     super(props);
     this.state = {
       email: null,
@@ -37,3 +42,6 @@ export default class Login extends React.Component {
     );
   }
 }
+
+export default LoginScreenComponent;
+export const LoginScreen = LoginScreenComponent;

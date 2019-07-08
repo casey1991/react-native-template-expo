@@ -6,7 +6,7 @@ import {
   SearchScreen
 } from "./Screens/Main/Home";
 import { Constants } from "~/Libs/NavigationService";
-import i18n, { Constants as I18nConstants } from "~/Libs/i18n";
+import i18n from "~/Libs/i18n";
 export const MainStack = createBottomTabNavigator({
   [Constants.HOME]: {
     screen: HomeScreen,
