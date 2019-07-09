@@ -4,7 +4,6 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
     "experimentalDecorators": true,

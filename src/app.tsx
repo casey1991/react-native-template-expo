@@ -2,6 +2,8 @@ import React from "react";
 import { Provider as ReduxProvider } from "react-redux";
 import { Provider as PaperProvider } from "react-native-paper";
 import { I18nextProvider, withNamespaces } from "react-i18next";
+import { mapping, light as lightTheme } from "@eva-design/eva";
+import { ApplicationProvider, Layout } from "react-native-ui-kitten";
 import { ApolloProvider } from "react-apollo";
 import { createApolloClient } from "~/Libs/Apollo";
 import { createStore } from "~/Libs/Redux";
@@ -26,7 +28,11 @@ export class App extends React.Component {
         <ApolloProvider client={createApolloClient()}>
           <PaperProvider>
             <I18nextProvider i18n={i18n}>
-              <ReloadAppOnLanguageChange />
+              <ApplicationProvider mapping={mapping} theme={lightTheme}>
+                <Layout style={{ flex: 1 }}>
+                  <ReloadAppOnLanguageChange />
+                </Layout>
+              </ApplicationProvider>
             </I18nextProvider>
           </PaperProvider>
         </ApolloProvider>
