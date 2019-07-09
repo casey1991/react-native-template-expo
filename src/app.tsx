@@ -11,6 +11,8 @@ import { setTopLevelNavigator } from "~/Libs/NavigationService";
 import i18n from "~/Libs/i18n";
 import { AppNavigator } from "~/Navigator/AppStack";
 import { NavigationContainerComponent } from "react-navigation";
+import normalTheme from "~/Libs/Themes/normal";
+// import customMapping from "./Libs/Themes/normal/custom-mapping.json";
 const WrappedStack = ({ t }: any) => (
   <AppNavigator
     screenProps={{ t, i18n }}
@@ -28,7 +30,11 @@ export class App extends React.Component {
         <ApolloProvider client={createApolloClient()}>
           <PaperProvider>
             <I18nextProvider i18n={i18n}>
-              <ApplicationProvider mapping={mapping} theme={lightTheme}>
+              <ApplicationProvider
+                mapping={mapping}
+                theme={lightTheme}
+                customMapping={normalTheme}
+              >
                 <Layout style={{ flex: 1 }}>
                   <ReloadAppOnLanguageChange />
                 </Layout>
