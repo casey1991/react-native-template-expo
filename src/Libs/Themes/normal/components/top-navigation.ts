@@ -75,7 +75,7 @@ export default {
         paddingVertical: 8,
         paddingHorizontal: 8,
         borderBottomWidth: 1,
-        borderBottomColor: "background-basic-color-3",
+        borderBottomColor: "background-basic-color-2",
         backgroundColor: "background-basic-color-1",
         titleFontSize: "text-subtitle-1-font-size",
         titleLineHeight: "text-subtitle-1-line-height",
