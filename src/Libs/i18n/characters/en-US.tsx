@@ -1,3 +1,6 @@
 export default {
-  home: "Home"
+  home: "Home",
+  search: "Search",
+  message: "Message",
+  me: "Me"
 };

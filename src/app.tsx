@@ -1,6 +1,5 @@
 import React from "react";
 import { Provider as ReduxProvider } from "react-redux";
-import { Provider as PaperProvider } from "react-native-paper";
 import { I18nextProvider, withNamespaces } from "react-i18next";
 import { mapping } from "@eva-design/eva";
 import {
@@ -61,13 +60,11 @@ export class App extends React.Component<AppProps, AppState> {
         >
           <ReduxProvider store={createStore()}>
             <ApolloProvider client={createApolloClient()}>
-              <PaperProvider>
-                <I18nextProvider i18n={i18n}>
-                  <Layout style={{ flex: 1 }}>
-                    <ReloadAppOnLanguageChange />
-                  </Layout>
-                </I18nextProvider>
-              </PaperProvider>
+              <I18nextProvider i18n={i18n}>
+                <Layout style={{ flex: 1 }}>
+                  <ReloadAppOnLanguageChange />
+                </Layout>
+              </I18nextProvider>
             </ApolloProvider>
           </ReduxProvider>
         </ThemeProvider>

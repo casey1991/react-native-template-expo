@@ -1,11 +1,18 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import { Button } from "react-native-ui-kitten";
-import { ThemeContext, ThemeKey } from "~/Libs/Themes";
-class HomeScreenComponent extends React.Component {
+import { View, StyleSheet } from "react-native";
+import {
+  Button,
+  withStyles,
+  ThemedComponentProps
+} from "react-native-ui-kitten";
+import { ThemeContext } from "~/Libs/Themes";
+
+export interface HomeProps extends ThemedComponentProps {}
+class HomeComponent extends React.Component<HomeProps> {
   render() {
+    const { themedStyle } = this.props;
     return (
-      <View style={[styles.container]}>
+      <View style={[styles.container, themedStyle.container]}>
         <ThemeContext.Consumer>
           {({ toggleTheme, currentTheme }) => {
             return (
@@ -23,7 +30,6 @@ class HomeScreenComponent extends React.Component {
             );
           }}
         </ThemeContext.Consumer>
-        <Text>Home Screen</Text>
       </View>
     );
   }
@@ -36,5 +42,8 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   }
 });
-export default HomeScreenComponent;
-export const HomeScreen = HomeScreenComponent;
+const ThemedHomeComponent = withStyles(HomeComponent, theme => ({
+  container: { backgroundColor: theme["background-basic-color-1"] }
+}));
+export default ThemedHomeComponent;
+export const HomeScreen = ThemedHomeComponent;

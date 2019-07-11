@@ -1,20 +1,20 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation";
 import { Constants } from "~/Libs/NavigationService";
-import { HomeScreen } from "./Screens/Main/Home";
+import { MeScreen } from "./Screens/Main/Home";
 import { NormalTopNavigation } from "~/Components";
-export const MainStack = createStackNavigator({
-  [Constants.Screens.HOME]: {
-    screen: HomeScreen,
+export const MeStack = createStackNavigator({
+  [Constants.Screens.ME]: {
+    screen: MeScreen,
     navigationOptions: () => ({
       header: (
         <NormalTopNavigation
           forceInset={{ top: "always", bottom: "never" }}
-          title={"Home"}
+          title={"Me"}
           alignment="center"
         />
       )
     })
   }
 });
-export default MainStack;
+export default MeStack;

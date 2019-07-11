@@ -1,9 +1,9 @@
 import { createSwitchNavigator, createAppContainer } from "react-navigation";
-import { MainStack } from "./MainStack";
+import { TabStack } from "./TabStack";
 import { AuthStack } from "./AuthStack";
 import { Constants } from "~/Libs/NavigationService";
 const AppStack = createSwitchNavigator({
-  [Constants.MAIN_STACK]: { screen: MainStack },
-  [Constants.AUTH_STACK]: { screen: AuthStack }
+  [Constants.Stacks.TAB_STACK]: { screen: TabStack },
+  [Constants.Stacks.AUTH_STACK]: { screen: AuthStack }
 });
 export const AppNavigator = createAppContainer(AppStack);
