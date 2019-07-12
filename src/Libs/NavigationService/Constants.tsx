@@ -5,13 +5,16 @@ export const ME_STACK = "MeStack";
 export const MESSAGE_STACK = "MessageStack";
 export const SEARCH_STACK = "SearchStack";
 export const TAB_STACK = "TabStack";
+export const SETTING_STACK = "SettingStack";
+export const HOME_STACK = "HomeStack";
 // Screens
-export const HOME = "Home";
-export const SEARCH = "Search";
-export const MESSAGE = "Message";
-export const ME = "Me";
-export const LOGIN = "Login";
 export const FORGOT = "Forgot";
+export const HOME = "Home";
+export const LOGIN = "Login";
+export const ME = "Me";
+export const MESSAGES = "Messages";
+export const SEARCH = "Search";
+export const SETTING = "Setting";
 export default {
   Stacks: {
     AUTH_STACK,
@@ -19,14 +22,17 @@ export default {
     ME_STACK,
     MESSAGE_STACK,
     SEARCH_STACK,
-    TAB_STACK
+    TAB_STACK,
+    SETTING_STACK,
+    HOME_STACK
   },
   Screens: {
+    FORGOT,
     HOME,
-    SEARCH,
-    MESSAGE,
-    ME,
     LOGIN,
-    FORGOT
+    ME,
+    MESSAGES,
+    SEARCH,
+    SETTING
   }
 };

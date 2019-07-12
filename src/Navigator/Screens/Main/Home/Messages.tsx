@@ -2,8 +2,8 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { withStyles, ThemedComponentProps } from "react-native-ui-kitten";
 
-export interface MeProps extends ThemedComponentProps {}
-class MeComponent extends React.Component<MeProps> {
+export interface MessagesProps extends ThemedComponentProps {}
+class MessagesComponent extends React.Component<MessagesProps> {
   render() {
     const { themedStyle } = this.props;
     return (
@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   }
 });
-const TheMessagedMessageComponent = withStyles(MeComponent, theMessage => ({
+const ThemedMessagesComponent = withStyles(MessagesComponent, theMessage => ({
   container: { backgroundColor: theMessage["background-basic-color-1"] }
 }));
-export default TheMessagedMessageComponent;
-export const MessageScreen = TheMessagedMessageComponent;
+export default ThemedMessagesComponent;
+export const MessagesScreen = ThemedMessagesComponent;

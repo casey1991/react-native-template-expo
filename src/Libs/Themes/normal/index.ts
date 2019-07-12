@@ -2,7 +2,7 @@ import BottomNavigation from "./components/bottom-navigation";
 import BottomNavigationTab from "./components/bottom-navigation-tab";
 import Button from "./components/button";
 import TopNavigation from "./components/top-navigation";
-export default {
+const mapping = {
   components: {
     BottomNavigation: BottomNavigation,
     BottomNavigationTab: BottomNavigationTab,
@@ -10,3 +10,5 @@ export default {
     TopNavigation: TopNavigation
   }
 };
+export const normalThemeMapping = mapping;
+export default mapping;

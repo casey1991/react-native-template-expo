@@ -5,15 +5,26 @@ import {
   SafeAreaView,
   NavigationScreenProp,
   NavigationRoute,
-  TabScene
+  TabScene,
+  createStackNavigator,
+  NavigationScreenProps
 } from "react-navigation";
-import { BottomNavigation, BottomNavigationTab } from "react-native-ui-kitten";
+import {
+  BottomNavigation,
+  BottomNavigationTab,
+  TopNavigationAction,
+  Layout
+} from "react-native-ui-kitten";
 import { Constants } from "~/Libs/NavigationService";
-import MainStack from "./MainStack";
-import SearchStack from "./SearchStack";
-import MessageStack from "./MessageStack";
-import MeStack from "./MeStack";
+import {
+  HomeScreen,
+  SearchScreen,
+  MessageScreen,
+  MeScreen
+} from "./Screens/Main/Home";
 import i18n from "~/Libs/i18n";
+import { NormalTopNavigation } from "~/Components";
+import { ActivityOutlineIcon } from "~/assets/icons";
 interface BottomNavigationProps {
   onTabPress: (routeName: string) => void;
   navigation: NavigationScreenProp<NavigationRoute>;
@@ -27,47 +38,126 @@ export const BottomNavigationComponent = (
   const state = navigation.state;
   const routes = state.routes;
   return (
-    <SafeAreaView forceInset={{ top: "never", bottom: "always" }}>
-      <BottomNavigation
-        onSelect={index => {
-          if (navigation && routes) {
-            navigation.navigate(routes[index].routeName);
-          }
-        }}
-        selectedIndex={state.index}
-      >
-        {map(state.routes, route => {
-          return (
-            <BottomNavigationTab
-              key={route.key}
-              title={
-                props && props.getLabelText({ route, focused: false, index: 0 })
-              }
-              onPress={() => {
-                navigation && navigation.navigate(route.routeName);
-              }}
-            />
-          );
-        })}
-      </BottomNavigation>
-    </SafeAreaView>
+    <Layout>
+      <SafeAreaView forceInset={{ top: "never", bottom: "always" }}>
+        <BottomNavigation
+          onSelect={index => {
+            if (navigation && routes) {
+              navigation.navigate(routes[index].routeName);
+            }
+          }}
+          selectedIndex={state.index}
+        >
+          {map(state.routes, route => {
+            return (
+              <BottomNavigationTab
+                key={route.key}
+                title={
+                  props &&
+                  props.getLabelText({ route, focused: false, index: 0 })
+                }
+                onPress={() => {
+                  navigation && navigation.navigate(route.routeName);
+                }}
+              />
+            );
+          })}
+        </BottomNavigation>
+      </SafeAreaView>
+    </Layout>
   );
 };
+
+export const HomeStack = createStackNavigator({
+  TabHomeScreen: {
+    screen: HomeScreen,
+    navigationOptions: ({ navigation }: NavigationScreenProps) => ({
+      header: (
+        <NormalTopNavigation
+          forceInset={{ top: "always", bottom: "never" }}
+          title={i18n.t("navigation:tabs.home")}
+          alignment="center"
+        />
+      )
+    })
+  }
+});
+
+const SearchStack = createStackNavigator({
+  TabSearchScreen: {
+    screen: SearchScreen,
+    navigationOptions: ({ navigation }: NavigationScreenProps) => ({
+      header: (
+        <NormalTopNavigation
+          forceInset={{ top: "always", bottom: "never" }}
+          title={i18n.t("navigation:tabs.search")}
+          alignment="center"
+        />
+      )
+    })
+  }
+});
+
+const MessagesStack = createStackNavigator({
+  TabMessagesScreen: {
+    screen: MessageScreen,
+    navigationOptions: ({ navigation }: NavigationScreenProps) => ({
+      header: (
+        <NormalTopNavigation
+          forceInset={{ top: "always", bottom: "never" }}
+          title={i18n.t("navigation:tabs.messages")}
+          alignment="center"
+        />
+      )
+    })
+  }
+});
+export const MeStack = createStackNavigator({
+  TabMeScreen: {
+    screen: MeScreen,
+    navigationOptions: ({ navigation }: NavigationScreenProps) => ({
+      header: (
+        <NormalTopNavigation
+          forceInset={{ top: "always", bottom: "never" }}
+          title={i18n.t("navigation:tabs.me")}
+          alignment="center"
+          rightControls={[
+            <TopNavigationAction
+              icon={ActivityOutlineIcon}
+              onPress={() => {
+                const onSettingPress = navigation.getParam(
+                  "onSettingPress",
+                  () => {}
+                );
+                onSettingPress();
+              }}
+            />
+          ]}
+        />
+      )
+    })
+  }
+});
+
 export const TabStack = createBottomTabNavigator(
   {
-    [Constants.Stacks.MAIN_STACK]: {
-      screen: MainStack,
-      navigationOptions: () => ({ title: i18n.t("navigation:tabs.home") })
+    [Constants.Screens.HOME]: {
+      screen: HomeStack,
+      navigationOptions: () => ({
+        title: i18n.t("navigation:tabs.home")
+      })
     },
-    [Constants.Stacks.SEARCH_STACK]: {
+    [Constants.Screens.SEARCH]: {
       screen: SearchStack,
-      navigationOptions: () => ({ title: i18n.t("navigation:tabs.search") })
+      navigationOptions: () => ({
+        title: i18n.t("navigation:tabs.search")
+      })
     },
-    [Constants.Stacks.MESSAGE_STACK]: {
-      screen: MessageStack,
-      navigationOptions: () => ({ title: i18n.t("navigation:tabs.message") })
+    [Constants.Screens.MESSAGES]: {
+      screen: MessagesStack,
+      navigationOptions: () => ({ title: i18n.t("navigation:tabs.messages") })
     },
-    [Constants.Stacks.ME_STACK]: {
+    [Constants.Screens.ME]: {
       screen: MeStack,
       navigationOptions: () => ({ title: i18n.t("navigation:tabs.me") })
     }

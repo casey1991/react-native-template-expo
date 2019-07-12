@@ -1,6 +1,6 @@
 export default {
   home: "Home",
   search: "Search",
-  message: "Message",
+  messages: "Messages",
   me: "Me"
 };

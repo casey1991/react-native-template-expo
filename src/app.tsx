@@ -14,7 +14,7 @@ import { setTopLevelNavigator } from "~/Libs/NavigationService";
 import i18n from "~/Libs/i18n";
 import { AppNavigator } from "~/Navigator/AppStack";
 import { NavigationContainerComponent } from "react-navigation";
-import normalTheme from "~/Libs/Themes/normal";
+import { normalThemeMapping } from "~/Libs/Themes/normal";
 import {
   ThemeContext,
   ThemeContextType,
@@ -56,7 +56,7 @@ export class App extends React.Component<AppProps, AppState> {
         <ThemeProvider
           mapping={mapping}
           theme={themes[this.state.theme]}
-          customMapping={normalTheme}
+          customMapping={normalThemeMapping}
         >
           <ReduxProvider store={createStore()}>
             <ApolloProvider client={createApolloClient()}>

@@ -4,7 +4,7 @@ export default {
     tabs: {
       home: characters.home,
       search: characters.search,
-      message: characters.message,
+      messages: characters.messages,
       me: characters.me
     }
   }

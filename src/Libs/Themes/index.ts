@@ -10,3 +10,4 @@ export const themes: ThemeRegistry = {
 };
 export type ThemeKey = keyof ThemeRegistry;
 export * from "./themeContext";
+export * from "./normal";
