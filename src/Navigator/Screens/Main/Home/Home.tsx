@@ -1,36 +1,13 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import {
-  Button,
-  withStyles,
-  ThemedComponentProps
-} from "react-native-ui-kitten";
-import { ThemeContext } from "~/Libs/Themes";
+import { withStyles, ThemedComponentProps } from "react-native-ui-kitten";
 
 export interface HomeProps extends ThemedComponentProps {}
 class HomeComponent extends React.Component<HomeProps> {
   render() {
     const { themedStyle } = this.props;
     return (
-      <View style={[styles.container, themedStyle.container]}>
-        <ThemeContext.Consumer>
-          {({ toggleTheme, currentTheme }) => {
-            return (
-              <Button
-                onPress={() => {
-                  if (currentTheme === "Normal Light") {
-                    toggleTheme("Normal Dark");
-                  } else {
-                    toggleTheme("Normal Light");
-                  }
-                }}
-              >
-                Toggle
-              </Button>
-            );
-          }}
-        </ThemeContext.Consumer>
-      </View>
+      <View style={[styles.container, themedStyle.container]}>{/*  */}</View>
     );
   }
 }
