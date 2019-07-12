@@ -6,7 +6,7 @@ import { NavigationScreenProps } from "react-navigation";
 
 import { SettingScreen } from "./Screens";
 import { TopNavigationAction } from "react-native-ui-kitten";
-import { ArrowLeftIcon } from "~/assets/icons";
+import { SettingIcon, ArrowLeftIcon } from "~/assets/icons";
 export const SettingStack = createStackNavigator({
   [Constants.Screens.SETTING]: {
     screen: SettingScreen,

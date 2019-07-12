@@ -12,25 +12,19 @@ import { ThemeContext } from "~/Libs/Themes";
 export interface SettingProps extends ThemedComponentProps {
   navigation: NavigationScreenProp<NavigationRoute<any>>;
 }
-interface SettingState {
-  nightMode: boolean;
-}
+interface SettingState {}
 class SettingComponent extends React.Component<SettingProps, SettingState> {
   constructor(props: SettingProps) {
     super(props);
-    this.state = {
-      nightMode: false
-    };
   }
   componentDidMount() {
     // navigation params
   }
   render() {
     const { themedStyle } = this.props;
-    const { nightMode } = this.state;
     return (
       <ThemeContext.Consumer>
-        {({ toggleTheme }) => {
+        {({ toggleTheme, currentTheme }) => {
           return (
             <View style={[styles.container, themedStyle.container]}>
               <ListItem
@@ -38,15 +32,13 @@ class SettingComponent extends React.Component<SettingProps, SettingState> {
                 title="Dark theme"
                 accessory={() => (
                   <Toggle
-                    checked={nightMode}
+                    checked={currentTheme === "Normal Dark"}
                     onChange={checked => {
-                      this.setState({ nightMode: checked }, () => {
-                        if (checked) {
-                          toggleTheme("Normal Dark");
-                        } else {
-                          toggleTheme("Normal Light");
-                        }
-                      });
+                      if (checked) {
+                        toggleTheme("Normal Dark");
+                      } else {
+                        toggleTheme("Normal Light");
+                      }
                     }}
                   />
                 )}

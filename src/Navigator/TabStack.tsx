@@ -24,7 +24,7 @@ import {
 } from "./Screens/Main/Home";
 import i18n from "~/Libs/i18n";
 import { NormalTopNavigation } from "~/Components";
-import { ActivityOutlineIcon } from "~/assets/icons";
+import { SettingIcon } from "~/assets/icons";
 interface BottomNavigationProps {
   onTabPress: (routeName: string) => void;
   navigation: NavigationScreenProp<NavigationRoute>;
@@ -123,7 +123,7 @@ export const MeStack = createStackNavigator({
           alignment="center"
           rightControls={[
             <TopNavigationAction
-              icon={ActivityOutlineIcon}
+              icon={SettingIcon}
               onPress={() => {
                 const onSettingPress = navigation.getParam(
                   "onSettingPress",

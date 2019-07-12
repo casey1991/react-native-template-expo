@@ -16,6 +16,14 @@ const ArrowLeft = (style: StyleProp<ImageStyle>): IconElement => {
 
   return Icon(source, style);
 };
+const Setting = (style: StyleProp<ImageStyle>): IconElement => {
+  const source: IconSource = {
+    imageSource: require("./pure/setting.png")
+  };
+
+  return Icon(source, style);
+};
 
 export const ActivityOutlineIcon = ActivityOutline;
 export const ArrowLeftIcon = ArrowLeft;
+export const SettingIcon = Setting;
