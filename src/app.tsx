@@ -20,7 +20,6 @@ import {
   ThemeType,
   Constants
 } from "./Libs/Themes";
-// import customMapping from "./Libs/Themes/normal/custom-mapping.json";
 const WrappedStack = ({ t }: any) => (
   <AppNavigator
     screenProps={{ t, i18n }}
@@ -59,6 +58,7 @@ export class App extends React.Component<AppProps, AppState> {
       toggleTheme: this._onSwitchTheme,
       toggleThemeMode: this._onSwitchThemeMode
     };
+
     return (
       <ThemeContext.Provider value={contextValue}>
         <ThemeProvider

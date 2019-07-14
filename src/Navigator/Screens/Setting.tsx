@@ -4,10 +4,16 @@ import {
   withStyles,
   ThemedComponentProps,
   ListItem,
-  Toggle
+  Toggle,
+  Button
 } from "react-native-ui-kitten";
 import { NavigationScreenProp, NavigationRoute } from "react-navigation";
 import { ThemeContext, Constants } from "~/Libs/Themes";
+import { ArrowLeftIcon, ArrowRightIcon } from "~/assets/icons";
+import {
+  navigate,
+  Constants as NavigationServiceConstants
+} from "~/Libs/NavigationService";
 
 export interface SettingProps extends ThemedComponentProps {
   navigation: NavigationScreenProp<NavigationRoute<any>>;
@@ -23,36 +29,25 @@ class SettingComponent extends React.Component<SettingProps, SettingState> {
   render() {
     const { themedStyle } = this.props;
     return (
-      <ThemeContext.Consumer>
-        {({ toggleThemeMode, currentTheme }) => {
-          return (
-            <View style={[styles.container, themedStyle.container]}>
-              <ListItem
-                disabled
-                title="Dark theme"
-                accessory={() => (
-                  <Toggle
-                    checked={currentTheme.theme === Constants.themes.DARK}
-                    onChange={checked => {
-                      if (checked) {
-                        toggleThemeMode(Constants.themes.DARK);
-                      } else {
-                        toggleThemeMode(Constants.themes.LIGHT);
-                      }
-                    }}
-                  />
-                )}
-              />
-            </View>
-          );
-        }}
-      </ThemeContext.Consumer>
+      <View style={[styles.container, themedStyle.container]}>
+        <ListItem
+          title="Themes"
+          accessory={() => ArrowRightIcon(styles.iconStyles)}
+          onPress={() => {
+            navigate(NavigationServiceConstants.Screens.THEMES);
+          }}
+        />
+      </View>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  iconStyles: {
+    width: 24,
+    height: 24
   }
 });
 const ThemedSettingComponent = withStyles(SettingComponent, theme => ({

@@ -1,13 +1,20 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { withStyles, ThemedComponentProps } from "react-native-ui-kitten";
+import {
+  withStyles,
+  ThemedComponentProps,
+  Button
+} from "react-native-ui-kitten";
 
 export interface HomeProps extends ThemedComponentProps {}
 class HomeComponent extends React.Component<HomeProps> {
   render() {
     const { themedStyle } = this.props;
     return (
-      <View style={[styles.container, themedStyle.container]}>{/*  */}</View>
+      <View style={[styles.container, themedStyle.container]}>
+        {/*  */}
+        <Button>Button</Button>
+      </View>
     );
   }
 }

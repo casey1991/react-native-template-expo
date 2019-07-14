@@ -3,6 +3,7 @@ import { find, keys, difference, isEmpty, values } from "lodash";
 import { ThemeType } from "./themeContext";
 import { Constants } from "./constants";
 import { normalThemeMapping } from "./normal";
+import { maidThemeMapping } from "./maid";
 // array[0] is theme
 export const themes = [
   {
@@ -12,6 +13,14 @@ export const themes = [
   {
     [Constants.themes.DARK]: dark,
     [Constants.mapping.NORMAL]: normalThemeMapping
+  },
+  {
+    [Constants.themes.LIGHT]: light,
+    [Constants.mapping.MAID]: maidThemeMapping
+  },
+  {
+    [Constants.themes.DARK]: dark,
+    [Constants.mapping.MAID]: maidThemeMapping
   }
 ];
 export * from "./themeContext";

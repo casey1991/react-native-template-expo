@@ -42,7 +42,8 @@ export default {
         paddingVertical: 4,
         backgroundColor: "background-basic-color-1",
         indicatorHeight: 4,
-        indicatorBackgroundColor: "color-primary-default"
+        indicatorBackgroundColor: "background-basic-color-1"
+        // indicatorBackgroundColor: "color-primary-default"
       }
     },
     noIndicator: {

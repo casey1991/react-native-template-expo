@@ -6,7 +6,7 @@ export interface ThemeType {
 }
 export interface ThemeContextType {
   currentTheme: ThemeType;
-  toggleTheme: (theme: ThemeType, mode?: string) => void;
+  toggleTheme: (theme: ThemeType) => void;
   toggleThemeMode: (mode: string) => void;
 }
 
