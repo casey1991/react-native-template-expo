@@ -58,19 +58,16 @@ export class App extends React.Component<AppProps, AppState> {
       toggleTheme: this._onSwitchTheme,
       toggleThemeMode: this._onSwitchThemeMode
     };
-
+    const currentTheme = findCurrentTheme(
+      this.state.themeType,
+      this.state.themeMapping
+    );
     return (
       <ThemeContext.Provider value={contextValue}>
         <ThemeProvider
           mapping={mapping}
-          theme={
-            findCurrentTheme(this.state.themeType, this.state.themeMapping)
-              .theme
-          }
-          customMapping={
-            findCurrentTheme(this.state.themeType, this.state.themeMapping)
-              .mapping
-          }
+          theme={currentTheme.theme}
+          customMapping={currentTheme.mapping}
         >
           <ReduxProvider store={createStore()}>
             <ApolloProvider client={createApolloClient()}>
