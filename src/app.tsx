@@ -4,8 +4,7 @@ import { I18nextProvider, withNamespaces } from "react-i18next";
 import { mapping } from "@eva-design/eva";
 import {
   ApplicationProvider as ThemeProvider,
-  Layout,
-  ThemeType
+  Layout
 } from "react-native-ui-kitten";
 import { ApolloProvider } from "react-apollo";
 import { createApolloClient } from "~/Libs/Apollo";
@@ -14,12 +13,12 @@ import { setTopLevelNavigator } from "~/Libs/NavigationService";
 import i18n from "~/Libs/i18n";
 import { AppNavigator } from "~/Navigator/AppStack";
 import { NavigationContainerComponent } from "react-navigation";
-import { normalThemeMapping } from "~/Libs/Themes/normal";
 import {
   ThemeContext,
   ThemeContextType,
-  themes,
-  ThemeKey
+  findCurrentTheme,
+  ThemeType,
+  Constants
 } from "./Libs/Themes";
 // import customMapping from "./Libs/Themes/normal/custom-mapping.json";
 const WrappedStack = ({ t }: any) => (
@@ -34,29 +33,44 @@ const ReloadAppOnLanguageChange = withNamespaces()(WrappedStack);
 
 interface AppProps {}
 interface AppState {
-  theme: ThemeKey;
+  themeMapping: string;
+  themeType: string;
 }
 export class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
     this.state = {
-      theme: "Normal Light"
+      themeType: Constants.themes.LIGHT,
+      themeMapping: Constants.mapping.NORMAL
     };
   }
   _onSwitchTheme = (theme: ThemeType) => {
-    this.setState({ theme: theme });
+    this.setState({ themeType: theme.theme, themeMapping: theme.mapping });
+  };
+  _onSwitchThemeMode = (mode: string) => {
+    this.setState({ themeType: mode });
   };
   render() {
     const contextValue: ThemeContextType = {
-      currentTheme: this.state.theme,
-      toggleTheme: this._onSwitchTheme
+      currentTheme: {
+        theme: this.state.themeType,
+        mapping: this.state.themeMapping
+      },
+      toggleTheme: this._onSwitchTheme,
+      toggleThemeMode: this._onSwitchThemeMode
     };
     return (
       <ThemeContext.Provider value={contextValue}>
         <ThemeProvider
           mapping={mapping}
-          theme={themes[this.state.theme]}
-          customMapping={normalThemeMapping}
+          theme={
+            findCurrentTheme(this.state.themeType, this.state.themeMapping)
+              .theme
+          }
+          customMapping={
+            findCurrentTheme(this.state.themeType, this.state.themeMapping)
+              .mapping
+          }
         >
           <ReduxProvider store={createStore()}>
             <ApolloProvider client={createApolloClient()}>

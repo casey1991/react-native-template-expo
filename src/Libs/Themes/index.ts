@@ -1,13 +1,38 @@
 import { dark, light } from "@eva-design/eva";
-import { ThemeType } from "react-native-ui-kitten";
-interface ThemeRegistry {
-  ["Normal Light"]: ThemeType;
-  ["Normal Dark"]: ThemeType;
-}
-export const themes: ThemeRegistry = {
-  "Normal Light": light,
-  "Normal Dark": dark
-};
-export type ThemeKey = keyof ThemeRegistry;
+import { find, keys, difference, isEmpty, values } from "lodash";
+import { ThemeType } from "./themeContext";
+import { Constants } from "./constants";
+import { normalThemeMapping } from "./normal";
+// array[0] is theme
+export const themes = [
+  {
+    [Constants.themes.LIGHT]: light,
+    [Constants.mapping.NORMAL]: normalThemeMapping
+  },
+  {
+    [Constants.themes.DARK]: dark,
+    [Constants.mapping.NORMAL]: normalThemeMapping
+  }
+];
 export * from "./themeContext";
-export * from "./normal";
+export * from "./constants";
+
+export function findCurrentTheme(theme: string, mapping: string): ThemeType {
+  const exited = find(themes, item => {
+    const itemKeys = keys(item);
+    const result = difference(itemKeys, [theme, mapping]);
+    return isEmpty(result);
+  });
+  if (!exited)
+    return {
+      theme: light,
+      mapping: normalThemeMapping
+    };
+  else {
+    const exitedValues = values(exited);
+    return {
+      theme: exitedValues[0],
+      mapping: exitedValues[1]
+    };
+  }
+}

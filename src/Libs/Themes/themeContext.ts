@@ -1,13 +1,22 @@
 import React from "react";
-import { ThemeType } from "react-native-ui-kitten";
+import { Constants } from "./constants";
+export interface ThemeType {
+  theme: any;
+  mapping: any;
+}
 export interface ThemeContextType {
   currentTheme: ThemeType;
-  toggleTheme: (theme: ThemeType) => void;
+  toggleTheme: (theme: ThemeType, mode?: string) => void;
+  toggleThemeMode: (mode: string) => void;
 }
 
 const initialValue: ThemeContextType = {
-  currentTheme: "Normal Light",
-  toggleTheme: (theme: ThemeType) => {}
+  currentTheme: {
+    theme: Constants.themes.LIGHT,
+    mapping: Constants.mapping.NORMAL
+  },
+  toggleTheme: (theme: ThemeType) => {},
+  toggleThemeMode: (mode: string) => {}
 };
 
 export const ThemeContext: React.Context<

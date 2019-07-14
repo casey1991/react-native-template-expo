@@ -7,7 +7,7 @@ import {
   Toggle
 } from "react-native-ui-kitten";
 import { NavigationScreenProp, NavigationRoute } from "react-navigation";
-import { ThemeContext } from "~/Libs/Themes";
+import { ThemeContext, Constants } from "~/Libs/Themes";
 
 export interface SettingProps extends ThemedComponentProps {
   navigation: NavigationScreenProp<NavigationRoute<any>>;
@@ -24,7 +24,7 @@ class SettingComponent extends React.Component<SettingProps, SettingState> {
     const { themedStyle } = this.props;
     return (
       <ThemeContext.Consumer>
-        {({ toggleTheme, currentTheme }) => {
+        {({ toggleThemeMode, currentTheme }) => {
           return (
             <View style={[styles.container, themedStyle.container]}>
               <ListItem
@@ -32,12 +32,12 @@ class SettingComponent extends React.Component<SettingProps, SettingState> {
                 title="Dark theme"
                 accessory={() => (
                   <Toggle
-                    checked={currentTheme === "Normal Dark"}
+                    checked={currentTheme.theme === Constants.themes.DARK}
                     onChange={checked => {
                       if (checked) {
-                        toggleTheme("Normal Dark");
+                        toggleThemeMode(Constants.themes.DARK);
                       } else {
-                        toggleTheme("Normal Light");
+                        toggleThemeMode(Constants.themes.LIGHT);
                       }
                     }}
                   />
