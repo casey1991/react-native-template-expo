@@ -24,7 +24,6 @@
     "react-apollo": "^2.4.0",
     "react-i18next": "^9.0.2",
     "react-native": "0.57.1",
-    "react-native-paper": "^2.4.0",
     "react-native-ui-kitten": "^4.0.5",
     "react-navigation": "^3.11.0",
     "react-redux": "^6.0.0",
